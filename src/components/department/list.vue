@@ -21,7 +21,7 @@
 					<td>
 					  <router-link v-bind:to="'/department/modify/'+dm.no" class="btn btn-default">修改</router-link>
 					  <a href="#" v-on:click="deleteDepartment(dm.no)"  class="btn btn-danger">删除</a> 
-					  <router-link to="/department/view" class="btn btn-default">查看</router-link>
+					  <router-link v-bind:to="'/department/view/'+dm.no" class="btn btn-default">查看</router-link>
 					</td>
 				</tr>
 			  </tbody>
@@ -34,7 +34,7 @@
 </template>
 
 <script>
-	import axios from "axios";
+	//import axios from "axios";
 	export default {
 		name:"DepartmentList",
 		data(){
@@ -51,7 +51,7 @@
 		},
 		methods:{
 			getList(){
-				axios.get("http://localhost:8200/department/list/all/page",{
+				this.axiosJSON.get("/department/list/all/page",{
 					params:{
 						rows:this.rows,
 						page:this.page
@@ -65,7 +65,7 @@
 			deleteDepartment(no){
 				let checkresult=confirm("您确认要删除此部门么");
 				if(checkresult){
-					axios.post("http://localhost:8200/department/delete",{no:no}).then(result=>{
+					this.axiosJSON.post("/department/delete",{no:no}).then(result=>{
 						alert(result.data.message);
 						if(result.data.status=="OK"){
 							this.getList();

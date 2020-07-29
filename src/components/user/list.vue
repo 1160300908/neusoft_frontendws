@@ -8,13 +8,8 @@
 			  <thead>
 				<tr>
 				  <th scope="col">编号</th>
-				  <th scope="col">编码</th>
-				  <th scope="col">名称</th>
-				  <th scope="col">性别</th>
-				  <th scope="col">年龄</th>
-				  <th scope="col">邮箱</th>
-				  <th scope="col">手机号</th>
-				  <th scope="col">地址</th>
+				  <th scope="col">ID</th>
+				  <th scope="col">姓名</th>
 				  <th scope="col">操作</th>
 				</tr>
 			  </thead>
@@ -23,15 +18,9 @@
 				  <td>{{dm.no}}</td>
 				  <td>{{dm.id}}</td>
 				  <td>{{dm.name}}</td>
-				  <td>{{dm.sex}}</td>
-				  <td>{{dm.age}}</td>
-				  <td>{{dm.email}}</td>
-				  <td>{{dm.phone}}</td>
-				  <td>{{dm.address}}</td>
 					<td>
-					  <router-link v-bind:to="'/user/modify/'+dm.no" class="btn btn-default">修改</router-link>
+					  <router-link v-bind:to="'/user/view/'+dm.no" class="btn btn-default">查看详细信息</router-link>
 					  <a href="#" v-on:click="deleteUser(dm.no)"  class="btn btn-danger">删除</a> 
-					  <router-link to="/user/view" class="btn btn-default">查看</router-link>
 					</td>
 				</tr>
 			  </tbody>
